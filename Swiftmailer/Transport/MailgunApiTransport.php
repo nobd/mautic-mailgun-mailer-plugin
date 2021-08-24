@@ -316,6 +316,7 @@ class MailgunApiTransport extends AbstractTokenArrayTransport implements \Swift_
             $payload['bcc'] = $message['recipients']['bcc'];
         }
 
+        error_log($payload);
         return $payload;
     }
 
