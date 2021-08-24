@@ -294,6 +294,10 @@ class MailgunApiTransport extends AbstractTokenArrayTransport implements \Swift_
 			$messageArray['to'] = array_keys($messageArray['recipients']['to']);
 		}
 
+        if (empty($messageArray['recipient-variables'])) {
+			$messageArray['recipient-variables'] = array_keys($messageArray['recipients']['recipient-variables']);
+		}
+
         return $messageArray;
     }
 
@@ -316,7 +320,7 @@ class MailgunApiTransport extends AbstractTokenArrayTransport implements \Swift_
             $payload['bcc'] = $message['recipients']['bcc'];
         }
 
-        error_log($payload);
+        error_log($payload['recipient-variables']);
         return $payload;
     }
 
